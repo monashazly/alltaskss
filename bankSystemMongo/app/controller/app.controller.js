@@ -97,19 +97,29 @@ class User {
     const id = req.params.id
     const value = req.body.value
     dbConnection((err, client, db) => {
-      // db.collection("users").findOne({_id:new ObjectID(id)},(err,result)=>{
-      //     if(err) return res.redirect("/err404")
-      //     const user=result
-      //     const intiall=parseInt(user.intial)
-      //     user.added=parseInt(value)
-      //     user.total=parseInt(value)+intiall
-      //      console.log(user)
-      // })
+    //   db.collection("users").findOne({_id:new ObjectID(id)},(err,result)=>{
+    //       if(err) return res.redirect("/err404")
+    //       const user=result
+    //       const intiall=parseInt(user.intial)
+    //       user.added=parseInt(value)
+    //       user.total=parseInt(value)+intiall
+    //        console.log(user)
+    //   })
+    async function run() {
+        const user=  await db.collection("users").findOne({_id:new ObjectID(id)})
+       return user
+        
+      }
+const user=run()
+
+
       db.collection('users').updateOne(
         { _id: new ObjectID(id) },
         {
           $set: {
-            added: parseInt(value)
+            added: parseInt(value),
+            
+            // total:added+intial
           }
         },
         (err, result) => {
