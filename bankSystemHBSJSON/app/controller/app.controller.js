@@ -94,8 +94,8 @@ class User {
   //   // console.log(req.body.add)
   //   // req.body.withdraw=Boolean(req.body.withdraw);
   //   // console.log(req.body.withdraw)
-  //   const result= req.body.add1
-  //   console.log(result)
+  //   const result= req.body.add
+  //   res.send(result)
 
     
 
